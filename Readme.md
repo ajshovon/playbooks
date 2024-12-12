@@ -34,7 +34,7 @@ personal-server/
 └── 10_install_packages.yml.yml
 ```
 
-- `10_install_packages.yml`: Install install_packages.
+- `10_install_packages.yml`: Install necessary packages.
 
 ## Contributing
 
