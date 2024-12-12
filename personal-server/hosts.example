@@ -1,0 +1,3 @@
+[personal]
+<server_ip>:<port> ansible_user=<user_name>
+<server_ip>:<port> ansible_user=<user_name>
