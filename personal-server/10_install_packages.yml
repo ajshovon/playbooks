@@ -3,10 +3,12 @@
 - hosts: all
   pre_tasks:
     - name: Update package cache
+      tags: always
       package:
         update_cache: yes
   tasks:
     - name: Install Packages
+      tags: always
       package:
         name:
           - tmux
@@ -18,7 +20,22 @@
 - hosts: prod
   tasks:
     - name: Install Prod Packages
+      tags: prod,caddy
       package:
         name:
           - caddy
         state: latest
+    - name: Install Firewall (Debian)
+      tags: prod,firewall,debian
+      apt:
+        name:
+          - ufw
+        state: latest
+      when: ansible_distribution == 'Debian'
+    - name: Install Firewall (RHEL)
+      tags: prod,firewall,rhel
+      dnf:
+        name:
+          - firewalld
+        state: latest
+      when: ansible_distribution == 'RedHat'
