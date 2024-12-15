@@ -1,14 +1,24 @@
 ---
 
 - hosts: all
+  pre_tasks:
+    - name: Update package cache
+      package:
+        update_cache: yes
   tasks:
     - name: Install Packages
       package:
         name:
-          - caddy
           - tmux
           - nano
           - wget
           - htop
         state: latest
-        update_cache: yes
+
+- hosts: prod
+  tasks:
+    - name: Install Prod Packages
+      package:
+        name:
+          - caddy
+        state: latest
