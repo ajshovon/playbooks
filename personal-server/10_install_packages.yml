@@ -39,3 +39,11 @@
           - firewalld
         state: latest
       when: ansible_distribution == 'RedHat'
+    - name: Copy Login Message
+      tags: prod,info
+      copy:
+        src: login-info.sh
+        dest: /etc/profile.d/login-info.sh
+        owner: root
+        group: root
+        mode: 0755
