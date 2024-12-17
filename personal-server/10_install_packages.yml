@@ -32,21 +32,21 @@
         name: caddy
         state: started
         enabled: yes
-      when: ansible_distribution == 'RedHat'
+      when: ansible_os_family == 'RedHat'
     - name: Install Firewall (Debian)
       tags: prod,firewall,debian
       apt:
         name:
           - ufw
         state: latest
-      when: ansible_distribution == 'Debian'
+      when: ansible_os_family == 'Debian'
     - name: Install Firewall (RHEL)
       tags: prod,firewall,rhel
       dnf:
         name:
           - firewalld
         state: latest
-      when: ansible_distribution == 'RedHat'
+      when: ansible_os_family == 'RedHat'
     - name: Copy Login Message
       tags: prod,info
       copy:
