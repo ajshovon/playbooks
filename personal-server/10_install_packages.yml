@@ -26,6 +26,13 @@
         name:
           - caddy
         state: latest
+    - name: Start caddy service
+      tags: prod,caddy
+      service:
+        name: caddy
+        state: started
+        enabled: yes
+      when: ansible_distribution == 'RedHat'
     - name: Install Firewall (Debian)
       tags: prod,firewall,debian
       apt:

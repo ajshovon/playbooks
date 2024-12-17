@@ -6,7 +6,7 @@ ansible-playbook --list-hosts 10_install_packages.yml
 # Run playbook
 ansible-playbook 10_install_packages.yml
 
-# List Tasks
+# List tags
 ansible-playbook ansible-playbook --list-tags
 
 # Run with tags
