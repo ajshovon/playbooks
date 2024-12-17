@@ -15,6 +15,7 @@
           - nano
           - wget
           - htop
+          - unzip
         state: latest
 
 - hosts: prod
@@ -47,3 +48,13 @@
         owner: root
         group: root
         mode: 0755
+    - name: Install Terraform
+      tags: prod,terraform
+      unarchive:
+        src: https://releases.hashicorp.com/terraform/1.10.2/terraform_1.10.2_linux_amd64.zip
+        dest: /usr/local/bin
+        remote_src: yes
+        mode: 0755
+        owner: root
+        group: root
+        
